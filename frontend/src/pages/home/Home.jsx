@@ -5,9 +5,9 @@ const Home = () => {
         <div>
             <h1>Welcome to the Home Page</h1>
             <p>This is some text on the home page.</p>
-            <p><a href="/product1">Product 1</a></p>
-            <p><a href="/product2">Product 2</a></p>
-            <Link to="/cart" style={{ position: 'absolute', top: '10px', right: '10px' }}>Shopping Cart</Link>
+            <p><a href="/product1">Product 1</a></p> {/* Make these into cards */}
+            <p><a href="/product2">Product 2</a></p> {/* Make these into cards */}
+            <Link to="/cart" style={{ position: 'absolute', top: '10px', right: '10px' }}>Shopping Cart</Link>  {/* // Add a link to the shopping cart popup */}
         </div>
     );
 }

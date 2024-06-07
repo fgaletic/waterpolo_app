@@ -8,14 +8,14 @@ const StyledLink = styled(Link)({
     display: 'inline-block'
 });
 
-const Product1 = () => {
+const ProductCard = () => {
     const product = {
         name: 'Product 1',
         description: 'This is some text about product 1.',
         price: '€29.99',
         stock: 100,
         image: banador
-    };
+    }; {/* Later remove these */}
 
     return (
         <div>
@@ -47,4 +47,4 @@ const Product1 = () => {
     );
 }
 
-export default Product1;
+export default ProductCard;

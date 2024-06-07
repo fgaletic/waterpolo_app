@@ -5,8 +5,8 @@
 // import Button from '@mui/material/Button';
 import { Routes, Route } from "react-router-dom";
 
-import  Home  from "./pages/home/Home";
-import Product1 from "./pages/products/Product1";
+import Home from "./pages/home/Home";
+import Product1 from "./pages/products/Product1"; // Make Product page parent of each product1/2 page - figure out how
 import Product2 from "./pages/products/Product2";
 import ShoppingCart from "./pages/shopping-cart/ShoppingCart.jsx";
 
