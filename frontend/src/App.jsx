@@ -5,9 +5,10 @@
 // import Button from '@mui/material/Button';
 import { Routes, Route } from "react-router-dom";
 
-import Home from "./pages/home/Home";
+import  Home  from "./pages/home/Home";
 import Product1 from "./pages/products/Product1";
 import Product2 from "./pages/products/Product2";
+import ShoppingCart from "./pages/shopping-cart/ShoppingCart.jsx";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/product1" element={<Product1 />} />
       <Route path="/product2" element={<Product2 />} />
+      <Route path="/shopping-cart" element={<ShoppingCart/>} />
     </Routes>
   );
 }
