@@ -9,6 +9,12 @@ router.get('/', async (req, res) => {
   res.send(products);
 });
 
+// Get a single product by ID
+router.get('/:id', async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    res.send(product);
+  });  
+
 // Add new product
 router.post('/', async (req, res) => {
   const product = new Product(req.body);

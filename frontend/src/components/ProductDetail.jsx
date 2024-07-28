@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { CartContext } from '../context/CartContext';
 // import banador from '../assets/banador.png';
+import { Container, Typography, Button } from '@mui/material';
 
 const ProductDetail = () => {
     const { id } = useParams();
@@ -24,13 +25,21 @@ const ProductDetail = () => {
     if (!product) return <div>Loading...</div>;
   
     return (
-      <div>
-        <h1>{product.name}</h1>
-        <p>{product.description}</p>
-        <p>${product.price}</p>
-        <button onClick={handleAddToCart}>Add to Cart</button>
-      </div>
-    );
-  };
-  
-  export default ProductDetail;
+        <Container>
+          <Typography variant="h4" component="h1" gutterBottom>
+            {product.name}
+          </Typography>
+          <Typography variant="body1" paragraph>
+            {product.description}
+          </Typography>
+          <Typography variant="h5">
+            ${product.price}
+          </Typography>
+          <Button onClick={handleAddToCart} variant="contained" color="primary">
+            Add to Cart
+          </Button>
+        </Container>
+      );
+    };
+    
+    export default ProductDetail;
