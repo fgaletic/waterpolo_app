@@ -3,5 +3,5 @@
       "target": "ES6",
       "module": "commonjs"
     },
-    "include": ["**/*.js"]
+    "include": ["**/*.js", "frontend/src/context/CartContext.jsx"]
   }

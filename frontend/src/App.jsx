@@ -1,53 +1,40 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-// import Button from '@mui/material/Button';
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProductList from './components/ProductList';
+import ProductDetail from './components/ProductDetail';
+import Cart from './components/Cart';
+import Checkout from './components/Checkout';
+import { CartProvider } from './context/CartContext';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-import Home from "./pages/home/Home";
-import Product1 from "./pages/products/Product1"; // Make Product page parent of each product1/2 page - figure out how
-import Product2 from "./pages/products/Product2";
-import ShoppingCart from "./pages/shopping-cart/ShoppingCart.jsx";
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#0e4b67',
+    },
+    secondary: {
+      main: '#ffba00',
+    },
+  },
+  typography: {
+    fontFamily: "Roboto Condensed",
+  },
+});
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/product1" element={<Product1 />} />
-      <Route path="/product2" element={<Product2 />} />
-      <Route path="/shopping-cart" element={<ShoppingCart/>} />
-    </Routes>
+    <ThemeProvider theme={theme}>
+      <CartProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<ProductList />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Routes>
+        </Router>
+      </CartProvider>
+    </ThemeProvider>
   );
 }
-
-//   const [count, setCount] = useState(0)
-
-//   return (
-//     <>
-//       <div>
-//         <a href="https://vitejs.dev" target="_blank">
-//           <img src={viteLogo} className="logo" alt="Vite logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={reactLogo} className="logo react" alt="React logo" />
-//         </a>
-//       </div>
-//       <h1>Vite + React</h1>
-//       <div className="card">
-//         <button onClick={() => setCount((count) => count + 1)}>
-//           count is {count}
-//         </button>
-//         <p>
-//           Edit <code>src/App.jsx</code> and save to test HMR
-//         </p>
-//       </div>
-//       <p className="read-the-docs">
-//         Click on the Vite and React logos to learn more
-//       </p>
-//       <Button color="primary">Hello World</Button>
-//     </>
-//   )
-// }
 
 export default App;
