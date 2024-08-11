@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-// import stripeRoutes from './routes/stripe.js';
+import routes from './routes/index.js';
 
 const app = express();
 app.use(cors());

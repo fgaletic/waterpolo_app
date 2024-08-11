@@ -4,7 +4,7 @@ import stripePackage from 'stripe';
 const router = express.Router();
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
-if (!stripeSecretKey) { // todo add this to the .env file
+if (!stripeSecretKey) { 
   console.error('STRIPE_SECRET_KEY is not defined in the environment variables');
   process.exit(1);
 }
@@ -18,7 +18,7 @@ router.post('/payment-intent', async (req, res) => {
   try {
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
-      currency: 'usd',
+      currency: 'eur',
     });
 
     res.send({
