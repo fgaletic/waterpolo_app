@@ -1,7 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import stripeRoutes from './routes/stripe.js';
+// import stripeRoutes from './routes/stripe.js';
 
 const app = express();
 app.use(cors());
@@ -19,7 +19,7 @@ mongoose.connect(mongoURI)
   .catch((err) => console.error('MongoDB connection error:', err));
 
  // Use the Stripe routes
-app.use('/api', stripeRoutes);
+// app.use('/api', stripeRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
