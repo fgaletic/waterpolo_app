@@ -1,10 +1,13 @@
-import { ProductList}  from './components/ProductList';
+import { ProductList } from './components/ProductList';
 import { ProductDetail } from './components/ProductDetail';
 import { Cart } from './components/Cart';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import { Checkout } from './components/Checkout';
 import { Routes, Route } from "react-router-dom";
 import { CartProvider } from './context/CartContext';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { Box } from '@mui/material';
 
 const theme = createTheme({
   palette: {
@@ -21,15 +24,27 @@ const theme = createTheme({
 });
 
 function App() {
+  // Assuming you have a way to track the cart item count
+  const cartItemCount = 0; // Replace with actual cart state
+
   return (
     <ThemeProvider theme={theme}>
       <CartProvider>
-        <Routes>
-          <Route path="/" element={<ProductList />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-        </Routes>
+        {/* Header Component */}
+        <Header cartItemCount={cartItemCount} />
+
+        {/* Main content */}
+        <Box component="main" sx={{ minHeight: '80vh', padding: '20px' }}>
+          <Routes>
+            <Route path="/" element={<ProductList />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Routes>
+        </Box>
+
+        {/* Footer Component */}
+        <Footer />
       </CartProvider>
     </ThemeProvider>
   );

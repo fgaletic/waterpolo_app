@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { CartContext } from '../context/CartContext';
-// import banador from '../assets/banador.png';
 import { Container, Typography, Button } from '@mui/material';
 
 export const ProductDetail = () => {
@@ -29,11 +28,14 @@ export const ProductDetail = () => {
           <Typography variant="h4" component="h1" gutterBottom>
             {product.name}
           </Typography>
+          <Typography>
+            {product.image}
+          </Typography>
           <Typography variant="body1" paragraph>
             {product.description}
           </Typography>
           <Typography variant="h5">
-            ${product.price}
+            {product.price}
           </Typography>
           <Button onClick={handleAddToCart} variant="contained" color="primary">
             Add to Cart
