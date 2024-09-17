@@ -6,7 +6,7 @@ import { Elements, CardElement, useStripe, useElements } from '@stripe/react-str
 
 const stripePromise = loadStripe('your-publishable-key-here');
 
-const CheckoutForm = () => {
+export const CheckoutForm = () => {
   const { cart } = useContext(CartContext);
   const [userInfo, setUserInfo] = useState({
     name: '',
@@ -85,10 +85,8 @@ const CheckoutForm = () => {
   );
 };
 
-const Checkout = () => (
+export const Checkout = () => (
   <Elements stripe={stripePromise}>
     <CheckoutForm />
   </Elements>
 );
-
-export default Checkout;

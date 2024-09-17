@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
-const Cart = () => {
+export const Cart = () => {
   const { cart, removeFromCart } = useContext(CartContext);
 
   return (
@@ -24,5 +24,3 @@ const Cart = () => {
     </div>
   );
 };
-
-export default Cart;

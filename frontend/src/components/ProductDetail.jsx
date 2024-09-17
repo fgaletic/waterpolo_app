@@ -5,7 +5,7 @@ import { CartContext } from '../context/CartContext';
 // import banador from '../assets/banador.png';
 import { Container, Typography, Button } from '@mui/material';
 
-const ProductDetail = () => {
+export const ProductDetail = () => {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const { addToCart } = useContext(CartContext);
@@ -41,5 +41,3 @@ const ProductDetail = () => {
         </Container>
       );
     };
-    
-    export default ProductDetail;
