@@ -12,13 +12,6 @@ const Header = ({ cartItemCount }) => {
           <img src={logo} alt="pg.waterpolo shop logo" style={{ height: 40 }} />
         </Box>
 
-        {/* External link: About Us */}
-        <Box>
-          <IconButton color="inherit" href="https://www.panteresgrogues.org/es/waterpolo-es/" target="_blank">
-            About Us
-          </IconButton>
-        </Box>
-
         {/* Cart Icon */}
         <IconButton color="inherit" component={Link} to="/cart">
           <Badge badgeContent={cartItemCount} color="secondary">
