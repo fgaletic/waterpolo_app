@@ -17,7 +17,7 @@ const Footer = () => {
     >
       {/* Copyright Information */}
       <Typography variant="body1">
-        Panteres Grogues 2023. Todos los derechos reservados.
+        Panteres Grogues 2024. Todos los derechos reservados.
       </Typography>
 
       {/* External Links (Including About Us) */}

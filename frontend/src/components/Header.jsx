@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, IconButton, Badge, Button, Box } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Badge, Box } from '@mui/material';
 import { ShoppingCart } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import logo from '/assets/logo_pg.png';
