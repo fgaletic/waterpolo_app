@@ -96,7 +96,13 @@ export const ProductDetail = () => {
       )}
 
       {/* Product Card */}
-      <Card sx={{ marginTop: 1, width: '50vh', marginLeft:"auto", marginRight:"auto" }}>
+        <Card sx={{
+          mt: 1,
+          ml: 'auto',
+          mr: 'auto',
+          width: '35%',
+          '@media (max-width: 600px)': {
+                width: '100%', }}}>
         {/* Product Image */}
         <CardMedia
           component="img"

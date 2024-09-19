@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
-import { Button, Typography, Box } from '@mui/material';
+import { Button, Typography, Box, CardMedia, Grid2 } from '@mui/material';
 
 export const Cart = () => {
   const { cart, removeFromCart } = useContext(CartContext);
@@ -21,24 +21,46 @@ export const Cart = () => {
 
       {cart.length > 0 ? (
         cart.map(item => (
-          <Box key={item.product._id} sx={{ borderBottom: '1px solid #ddd', paddingBottom: 2, marginBottom: 2 }}>
-            <Typography variant="h6">{item.product.name}</Typography>
-            <Typography variant="body1">{item.product.description}</Typography>
-            <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-              Price: ${item.product.price}
-            </Typography>
-            <Typography variant="body2">Quantity: {item.quantity}</Typography>
+          <Grid2 container spacing={4} key={item.product._id} sx={{ borderBottom: '1px solid #ddd', paddingBottom: 2, marginBottom: 2 }}>
+            <Grid2 item xs={4}>
+              {/* Small Product Image */}
+              <CardMedia
+                component="img"
+                height="100"
+                image={item.product.image} // Use the product image dynamically
+                alt={item.product.name}
+                sx={{
+                  objectFit: 'contain',
+                  width: '100%',
+                  maxWidth: '150px', // Adjust the size of the image
+                }}
+              />
+            </Grid2>
+            <Grid2 item xs={8}>
+              {/* Product Details */}
+              <Typography variant="h6">{item.product.name}</Typography>
+              <Typography variant="body1">{item.product.description}</Typography>
+              {item.product.selectedSize && ( // Only show size if available
+                <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
+                  Size: {item.product.selectedSize}
+                </Typography>
+              )}
+              <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
+                Price: ${item.product.price}
+              </Typography>
+              <Typography variant="body2">Quantity: {item.quantity}</Typography>
 
-            {/* Remove Button */}
-            <Button
-              variant="outlined"
-              color="secondary"
-              onClick={() => removeFromCart(item.product._id)}
-              sx={{ marginTop: 1 }}
-            >
-              Remove
-            </Button>
-          </Box>
+              {/* Remove Button */}
+              <Button
+                variant="outlined"
+                color="secondary"
+                onClick={() => removeFromCart(item.product._id)}
+                sx={{ marginTop: 1 }}
+              >
+                Remove
+              </Button>
+            </Grid2>
+          </Grid2>
         ))
       ) : (
         <Typography variant="body1">Your cart is empty.</Typography>
