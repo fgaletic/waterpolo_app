@@ -5,10 +5,10 @@ import logo from '/assets/logo_pg.png';
 
 const Header = ({ cartItemCount }) => {
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="sticky" color="primary">
       <Toolbar>
         {/* Shop logo */}
-        <Box component={Link} to="/" sx={{ flexGrow: 1 }}>
+        <Box component={Link} to="/" sx={{ flexGrow: 1, mt: 1 }}>
           <img src={logo} alt="pg.waterpolo shop logo" style={{ height: 40 }} />
         </Box>
 
