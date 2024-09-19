@@ -55,7 +55,7 @@ export const ProductList = () => {
   return (
     <Container>
       <Typography variant="h3" component="h1" gutterBottom>
-        Product List
+        Welcome to our Shop
       </Typography>
 
       {error && (

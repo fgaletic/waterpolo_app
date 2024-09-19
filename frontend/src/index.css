@@ -13,9 +13,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+#root {
+  width: 100%;
+  max-width: 1200px; /* Restrict to 1200px on larger screens */
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  #root {
+    max-width: 100%; /* Full width on smaller screens */
+  }
+}
+
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #0e4b67;
   text-decoration: inherit;
 }
 a:hover {
@@ -27,7 +39,8 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  min-height: 100vh;
+  height: 99vh;  /* To prevent the scroll bar from appearing */
+
 }
 
 h1 {
