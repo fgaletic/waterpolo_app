@@ -64,10 +64,14 @@ export const ProductList = () => {
         </Typography>
       )}
 
-      <Grid2 container spacing={4}>
+<Grid2 container spacing={4}>
         {Array.isArray(products) && products.length > 0 ? (
           products.map(product => (
-            <Grid2 item key={product._id} xs={12} sm={6} md={4}>
+            <Grid2 item key={product._id} xs={12} sm={6} md={4} sx={{
+              '@media (max-width: 600px)': {
+                width: '100%',
+              },
+            }}>
               <Card>
                 {/* Product Image */}
                 <CardMedia
@@ -75,6 +79,10 @@ export const ProductList = () => {
                   height="200"
                   image={product.image}
                   alt={product.name}
+                  sx={{
+                    m: 0, mt: 2,
+                    objectFit: 'cover', /* optional: scale the image to fit the container */
+                  }}
                 />
                 <CardContent>
                   <Typography variant="h5" component="h2">
