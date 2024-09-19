@@ -2,12 +2,13 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { CartContext } from '../context/CartContext';
-import { Container, Typography, Button, Card, CardContent, CardMedia } from '@mui/material';
+import { Container, Typography, Button, Card, CardContent, CardMedia, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 
 export const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const [error, setError] = useState(null); // Track error for fallback
+  const [error, setError] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(''); 
   const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
@@ -32,6 +33,7 @@ export const ProductDetail = () => {
             image: '/assets/banador.png',
             description: 'Description for Swimsuit 1',
             price: 29.99,
+            sizes: ['S', 'M', 'L', 'XL',  'XXL',  'XXXL'],
           },
           {
             _id: '2',
@@ -39,6 +41,7 @@ export const ProductDetail = () => {
             image: '/assets/speedo.png',
             description: 'Description for Swimsuit 2',
             price: 49.99,
+            sizes: ['S', 'M', 'L', 'XL',  'XXL',  'XXXL'],
           },
           {
             _id: '3',
@@ -46,6 +49,7 @@ export const ProductDetail = () => {
             image: '/assets/banador.png',
             description: 'Description for Cap',
             price: 19.99,
+            sizes: ['S', 'M', 'L', 'XL',  'XXL',  'XXXL'],
           },
         ];
 
@@ -62,7 +66,15 @@ export const ProductDetail = () => {
   }, [id]);
 
   const handleAddToCart = () => {
-    addToCart(product, 1);
+    if (!selectedSize) {
+      alert('Please select a size before adding to the cart');
+      return;
+    }
+    addToCart({ ...product, selectedSize }, 1); // Pass selected size along with product
+  };
+
+  const handleSizeChange = (event) => {
+    setSelectedSize(event.target.value);
   };
 
   if (!product) return <div>Loading...</div>;
@@ -78,26 +90,20 @@ export const ProductDetail = () => {
 
       {/* Error Message */}
       {error && (
-        <Typography variant="body1" color="error" gutterBottom>
+        <Typography variant="body1" sx={{ padding: '10px 0px' }} color="error" gutterBottom>
           {error}
         </Typography>
       )}
 
       {/* Product Card */}
-      <Card sx={{ marginTop: 4, width: '50vh', marginLeft:"auto", marginRight:"auto" }}>
+      <Card sx={{ marginTop: 1, width: '50vh', marginLeft:"auto", marginRight:"auto" }}>
         {/* Product Image */}
         <CardMedia
           component="img"
           height="300"
           image={product.image}
           alt={product.name}
-          sx={{ objectFit: 'contain', padding: 2 }}
-          onLoad={() => {
-            console.log('Image loaded successfully');
-          }}
-          onError={() => {
-            console.log('Error loading image');
-          }}
+          sx={{ objectFit: 'contain' }}
         />
 
         {/* Product Details */}
@@ -111,6 +117,25 @@ export const ProductDetail = () => {
           <Typography variant="h5" color="primary">
             €{product.price}
           </Typography>
+
+          {/* Size Selector */}
+          {product.sizes && product.sizes.length > 0 && (
+            <FormControl fullWidth sx={{ marginTop: 2 }}>
+              <InputLabel id="size-label">Size</InputLabel>
+              <Select
+                labelId="size-label"
+                value={selectedSize}
+                onChange={handleSizeChange}
+                label="Size"
+              >
+                {product.sizes.map((size) => (
+                  <MenuItem key={size} value={size}>
+                    {size}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          )}
 
           {/* Add to Cart Button */}
           <Button onClick={handleAddToCart} variant="contained" color="primary" sx={{ marginTop: 2 }}>

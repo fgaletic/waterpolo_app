@@ -39,7 +39,7 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
-  height: 99vh;  /* To prevent the scroll bar from appearing */
+  height: 98vh;  /* To prevent the scroll bar from appearing */
 
 }
 
