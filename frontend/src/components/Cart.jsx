@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
+import { Button } from '@mui/material';
 
 export const Cart = () => {
   const { cart, removeFromCart } = useContext(CartContext);
@@ -10,9 +11,11 @@ export const Cart = () => {
       <h1>Your Cart</h1>
 
       {/* Back to Products Button */}
-      <Link to="/">
-        <button>Back to Products</button>
-      </Link>
+      <Link to="/" >
+            <Button sx={{ fontSize: '12px', color: "white", padding: '5px 10px' }}>
+              Back to Products
+            </Button>
+          </Link>
 
       {cart.length > 0 ? (
         cart.map(item => (
