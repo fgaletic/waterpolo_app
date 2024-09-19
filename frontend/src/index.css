@@ -15,7 +15,7 @@
 
 #root {
   width: 100%;
-  max-width: 1200px; /* Restrict to 1200px on larger screens */
+  max-width: 1280px; /* Restrict to 1280px on larger screens */
   margin: 0 auto;
 }
 

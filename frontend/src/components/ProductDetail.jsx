@@ -84,7 +84,7 @@ export const ProductDetail = () => {
       )}
 
       {/* Product Card */}
-      <Card sx={{ marginTop: 4 }}>
+      <Card sx={{ marginTop: 4, width: '50vh', marginLeft:"auto", marginRight:"auto" }}>
         {/* Product Image */}
         <CardMedia
           component="img"
