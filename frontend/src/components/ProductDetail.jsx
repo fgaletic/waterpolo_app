@@ -32,7 +32,7 @@ export const ProductDetail = () => {
             name: 'Swimsuit 1',
             image: '/assets/banador.png',
             description: 'Description for Swimsuit 1',
-            price: 29.99,
+            price: 2999,
             sizes: ['S', 'M', 'L', 'XL',  'XXL',  'XXXL'],
           },
           {
@@ -40,7 +40,7 @@ export const ProductDetail = () => {
             name: 'Swimsuit 2',
             image: '/assets/speedo.png',
             description: 'Description for Swimsuit 2',
-            price: 49.99,
+            price: 4999,
             sizes: ['S', 'M', 'L', 'XL',  'XXL',  'XXXL'],
           },
           {
@@ -48,7 +48,7 @@ export const ProductDetail = () => {
             name: 'Cap',
             image: '/assets/banador.png',
             description: 'Description for Cap',
-            price: 19.99,
+            price: 1999,
             sizes: ['S', 'M', 'L', 'XL',  'XXL',  'XXXL'],
           },
         ];
@@ -70,7 +70,7 @@ export const ProductDetail = () => {
       alert('Please select a size before adding to the cart');
       return;
     }
-    addToCart({ ...product, selectedSize }, 1); // Pass selected size along with product
+    addToCart({ ...product, quantity: 1, selectedSize }, 1); // Pass selected size along with product
   };
 
   const handleSizeChange = (event) => {
@@ -121,7 +121,7 @@ export const ProductDetail = () => {
             {product.description}
           </Typography>
           <Typography variant="h5" color="primary">
-            €{product.price}
+            €{(product.price / 100).toFixed(2)}
           </Typography>
 
           {/* Size Selector */}

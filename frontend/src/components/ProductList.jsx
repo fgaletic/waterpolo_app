@@ -10,7 +10,7 @@ export const ProductList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('/api/products');
+        const response = await axios.get('/products');
         if (Array.isArray(response.data)) {
           setProducts(response.data);
         } else {
@@ -27,21 +27,21 @@ export const ProductList = () => {
             name: 'Swimsuit 1',
             image: '/assets/banador.png',  // Product 1 image
             description: 'Description for Swimsuit 1',
-            price: 29.99
+            price: 2999
           },
           {
             _id: '2',
             name: 'Swimsuit 2',
             image: '/assets/speedo.png',   // Product 2 image
             description: 'Description for Swimsuit 2',
-            price: 49.99
+            price: 4999
           },
           {
             _id: '3',
             name: 'Cap',
             image: '/assets/banador.png',  // Reuse banador for Cap
             description: 'Description for Cap',
-            price: 19.99
+            price: 1999
           },
         ];
 
@@ -92,7 +92,7 @@ export const ProductList = () => {
                     {product.description}
                   </Typography>
                   <Typography variant="h6">
-                    €{product.price}
+                    €{(product.price / 100).toFixed(2)}
                   </Typography>
                   <Button component={Link} to={`/product/${product._id}`} variant="contained" color="primary">
                     View Details

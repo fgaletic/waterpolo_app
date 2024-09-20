@@ -1,12 +1,11 @@
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
 
 const ProductSchema = new mongoose.Schema({
-  name: String,
-  price: Number,
-  description: String,
-  size: String,
-  imageUrl: String,
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  sizes: { type: [String], required: true },
+  price: { type: Number, required: true },
+  image: { type: String, required: false },
 });
 
 export default mongoose.model('Product', ProductSchema);

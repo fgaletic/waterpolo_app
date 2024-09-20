@@ -1,12 +1,13 @@
 import { createContext, useState } from 'react';
+import PropTypes from 'prop-types';
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const addToCart = (product, quantity) => {
-    setCart([...cart, { product, quantity }]);
+  const addToCart = (product, quantity, size) => {
+    setCart([...cart, { product, quantity, size }]);
   };
 
   const removeFromCart = (productId) => {
@@ -18,4 +19,8 @@ export const CartProvider = ({ children }) => {
       {children}
     </CartContext.Provider>
   );
+};
+
+CartProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
