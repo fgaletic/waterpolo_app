@@ -10,7 +10,8 @@ export const ProductList = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('/products');
+        const response = await axios.get('http://localhost:3000/products'); /*TODO*/
+        
         if (Array.isArray(response.data)) {
           setProducts(response.data);
         } else {
