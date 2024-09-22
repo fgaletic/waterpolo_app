@@ -25,7 +25,7 @@ export const Cart = () => {
     });
     
     // Request Stripe Checkout Session creation from the back end
-      const { data } = await axios.post('/create-checkout-session', { products });
+      const { data } = await axios.post('http://localhost:3000/create-checkout-session', { products });
 
       // Redirect to Stripe Checkout page
       window.location.href = `https://checkout.stripe.com/pay/${data._id}`;

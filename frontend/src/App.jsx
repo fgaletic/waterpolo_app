@@ -37,7 +37,7 @@ function App() {
         <Box component="main" sx={{ minHeight: '80vh', padding: '20px' }}>
           <Routes>
             <Route path="/" element={<ProductList />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Checkout />} />
           </Routes>

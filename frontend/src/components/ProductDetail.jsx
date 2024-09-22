@@ -14,12 +14,8 @@ export const ProductDetail = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`/api/products/${id}`);
-        if (Array.isArray(response.data)) {
-          setProduct(response.data);
-        } else {
-          throw new Error('Invalid API response format');
-        }
+        const response = await axios.get(`http://localhost:3000/products/${id}`);
+        console.log('Response:', response);
         setProduct(response.data);
       } catch (error) {
         console.error("Error fetching product, using mock data:", error);

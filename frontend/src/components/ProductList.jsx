@@ -95,7 +95,7 @@ export const ProductList = () => {
                   <Typography variant="h6">
                     €{(product.price / 100).toFixed(2)}
                   </Typography>
-                  <Button component={Link} to={`/product/${product._id}`} variant="contained" color="primary">
+                  <Button component={Link} to={`/products/${product._id}`} variant="contained" color="primary">
                     View Details
                   </Button>
                 </CardContent>
