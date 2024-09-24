@@ -9,22 +9,24 @@ export const Cart = () => {
 
   const handleCheckout = async () => {
     try {
+      console.log('Cart:', cart);
       // Prepare cart items to send to the back end
       const products = cart.map(item => ({
         id: item.product._id,
         quantity: item.quantity,
-        size:  item.selectedSize,
+        size: item.selectedSize,
       }));
 
-          // Check the product object here
-    console.log(products); // You can log the products array to the console to inspect it
-    products.forEach(product => {
-      if (!product.id || !product.quantity || !product.size) {
-        throw new Error('Invalid product object');
-      }
-    });
-    
-    // Request Stripe Checkout Session creation from the back end
+      console.log('Products:', products);
+
+      // Check the product object here
+      products.forEach(product => {
+        if (!product.id || !product.quantity || !product.size) {
+          throw new Error('Invalid product object');
+        }
+      });
+
+      // Request Stripe Checkout Session creation from the back end
       const { data } = await axios.post('http://localhost:3000/create-checkout-session', { products });
 
       // Redirect to Stripe Checkout page

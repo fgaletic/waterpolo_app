@@ -6,9 +6,10 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const addToCart = (product, quantity, size) => {
-    setCart([...cart, { product, quantity, size }]);
+  const addToCart = (productToAdd) => {
+    setCart([...cart, productToAdd]);
   };
+  console.log('Cart:', cart) //TODO remove this
 
   const removeFromCart = (productId) => {
     setCart(cart.filter(item => item.product._id !== productId));

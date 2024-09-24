@@ -66,7 +66,8 @@ export const ProductDetail = () => {
       alert('Please select a size before adding to the cart');
       return;
     }
-    addToCart({ ...product, quantity: 1, selectedSize }, 1); // Pass selected size along with product
+    const productToAdd = { ...product, quantity: 1, size: selectedSize };
+    addToCart(productToAdd);
   };
 
   const handleSizeChange = (event) => {
@@ -78,34 +79,46 @@ export const ProductDetail = () => {
   return (
     <Container>
       {/* Back to Products Button */}
-      <Link to="/" style={{ textDecoration: 'none' }}>
-        <Button variant="contained" sx={{ fontSize: '12px', padding: '5px 10px' }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <Button
+          variant="contained"
+          sx={{ fontSize: "12px", padding: "5px 10px" }}
+        >
           Back to Products
         </Button>
       </Link>
 
       {/* Error Message */}
       {error && (
-        <Typography variant="body1" sx={{ padding: '10px 0px' }} color="error" gutterBottom>
+        <Typography
+          variant="body1"
+          sx={{ padding: "10px 0px" }}
+          color="error"
+          gutterBottom
+        >
           {error}
         </Typography>
       )}
 
       {/* Product Card */}
-        <Card sx={{
+      <Card
+        sx={{
           mt: 1,
-          ml: 'auto',
-          mr: 'auto',
-          width: '35%',
-          '@media (max-width: 600px)': {
-                width: '100%', }}}>
+          ml: "auto",
+          mr: "auto",
+          width: "35%",
+          "@media (max-width: 600px)": {
+            width: "100%",
+          },
+        }}
+      >
         {/* Product Image */}
         <CardMedia
           component="img"
           height="300"
           image={product.image}
           alt={product.name}
-          sx={{ objectFit: 'contain' }}
+          sx={{ objectFit: "contain" }}
         />
 
         {/* Product Details */}
