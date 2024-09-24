@@ -1,9 +1,10 @@
-import { ProductList } from './components/ProductList';
-import { ProductDetail } from './components/ProductDetail';
-import { Cart } from './components/Cart';
+import ProductList from './components/ProductList';
+import ProductDetail from './components/ProductDetail';
+import Cart from './components/Cart';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { Checkout } from './components/Checkout';
+import SuccessPage from  './components/SuccessPage';
+import CancelPage from './components/CancelPage'
 import { Routes, Route } from "react-router-dom";
 import { CartProvider } from './context/CartContext';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -39,7 +40,9 @@ function App() {
             <Route path="/" element={<ProductList />} />
             <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
+            {/* <Route path="/checkout" element={<Checkout />} /> */}
+            <Route path="/success" element={<SuccessPage />} />
+            <Route path="/cancel" element={<CancelPage />} />
           </Routes>
         </Box>
 

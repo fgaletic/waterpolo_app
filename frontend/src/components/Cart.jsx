@@ -7,7 +7,7 @@ import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe('pk_test_jHYQewRzwvMvdRHwTBbM8si3');
 
-export const Cart = () => {
+const Cart = () => {
   const { cart, removeFromCart } = useContext(CartContext);
 
   const handleCheckout = async () => {
@@ -134,3 +134,5 @@ export const Cart = () => {
     </Box>
   );
 };
+
+export default Cart;

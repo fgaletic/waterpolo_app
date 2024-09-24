@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Container, Grid2, Card, CardContent, CardMedia, Typography, Button } from '@mui/material';
 
-export const ProductList = () => {
+const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
 
@@ -111,3 +111,5 @@ export const ProductList = () => {
     </Container>
   );
 };
+
+export default ProductList;

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { CartContext } from '../context/CartContext';
 import { Container, Typography, Button, Card, CardContent, CardMedia, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 
-export const ProductDetail = () => {
+const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
@@ -161,3 +161,5 @@ export const ProductDetail = () => {
     </Container>
   );
 };
+
+export default ProductDetail;
