@@ -17,11 +17,13 @@ export const Cart = () => {
         size: item.selectedSize,
       }));
 
-      console.log('Products:', products);
+      console.log('Products:', products); // TODO remove
 
       // Check the product object here
       products.forEach(product => {
-        if (!product.id || !product.quantity || !product.size) {
+        console.log(`Product ${index + 1}:`, product); // Log each product object
+        
+        if (!product.id || !product.quantity || !product.size || !product.image) {
           throw new Error('Invalid product object');
         }
       });
@@ -35,6 +37,8 @@ export const Cart = () => {
       console.error('Error creating Stripe checkout session', error);
     }
   };
+
+  console.log('Cart:', cart);
 
   return (
     <Box sx={{ padding: 2 }}>
@@ -50,56 +54,55 @@ export const Cart = () => {
       </Link>
 
       {cart.length > 0 ? (
-        cart.map(item => (
-          <Grid2
-            container
-            spacing={4}
-            key={`${item.product._id}-${item.selectedSize}`}
-            sx={{ borderBottom: '1px solid #ddd', paddingBottom: 2, marginBottom: 2 }}
-          >
-            <Grid2 item xs={4}>
-              {/* Small Product Image */}
-              <CardMedia
-                component="img"
-                height="100"
-                image={item.product.image}
-                alt={item.product.name}
-                sx={{
-                  objectFit: 'contain',
-                  width: '100%',
-                  maxWidth: '150px'
-                }}
-              />
-            </Grid2>
-            <Grid2 item xs={8}>
-              {/* Product Details */}
-              <Typography variant="h6">{item.product.name}</Typography>
-              <Typography variant="body1">{item.product.description}</Typography>
-              {item.product.selectedSize && (
-                <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-                  Size: {item.product.selectedSize}
-                </Typography>
-              )}
-              <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
-                Price: €{item.product.price / 100} {/* Adjusted for cents */}
-              </Typography>
-              <Typography variant="body2">Quantity: {item.quantity}</Typography>
+  cart.map(item => (
+    <Grid2
+      container
+      spacing={4}
+      key={`${item._id}-${item.size}`} // Use item._id and item.size instead of item.product
+      sx={{ borderBottom: '1px solid #ddd', paddingBottom: 2, marginBottom: 2 }}
+    >
+      <Grid2 item xs={4}>
+        {/* Directly access item.image */}
+        <CardMedia
+          component="img"
+          height="100"
+          image={item.image}
+          alt={item.name}
+          sx={{
+            objectFit: 'contain',
+            width: '100%',
+            maxWidth: '150px',
+          }}
+        />
+      </Grid2>
+      <Grid2 item xs={8}>
+        {/* Directly access item.name, item.description, etc. */}
+        <Typography variant="h6">{item.name}</Typography>
+        <Typography variant="body1">{item.description}</Typography>
+        {item.size && (
+          <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
+            Size: {item.size}
+          </Typography>
+        )}
+        <Typography variant="body2" sx={{ fontWeight: 'bold' }}>
+          Price: €{item.price / 100}
+        </Typography>
+        <Typography variant="body2">Quantity: {item.quantity}</Typography>
 
-              {/* Remove Button */}
-              <Button
-                variant="outlined"
-                color="secondary"
-                onClick={() => removeFromCart(item.product._id)}
-                sx={{ marginTop: 1 }}
-              >
-                Remove
-              </Button>
-            </Grid2>
-          </Grid2>
-        ))
-      ) : (
-        <Typography variant="body1">Your cart is empty.</Typography>
-      )}
+        <Button
+          variant="outlined"
+          color="secondary"
+          onClick={() => removeFromCart(item._id)}
+          sx={{ marginTop: 1 }}
+        >
+          Remove
+        </Button>
+      </Grid2>
+    </Grid2>
+  ))
+) : (
+  <Typography variant="body1">Your cart is empty.</Typography>
+)}
 
       {/* Proceed to Checkout Button */}
       {cart.length > 0 && (

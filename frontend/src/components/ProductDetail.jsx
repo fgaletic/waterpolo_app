@@ -15,8 +15,7 @@ export const ProductDetail = () => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(`http://localhost:3000/products/${id}`);
-        console.log('Response:', response);
-        setProduct(response.data);
+        setProduct(response.data); //TODO fix the assets thingy
       } catch (error) {
         console.error("Error fetching product, using mock data:", error);
         setError("Failed to load product details. Using mock data.");
@@ -66,7 +65,8 @@ export const ProductDetail = () => {
       alert('Please select a size before adding to the cart');
       return;
     }
-    const productToAdd = { ...product, quantity: 1, size: selectedSize };
+    const productToAdd = { ...product, quantity: 1, size: selectedSize, image: product.image }; // TODO: Review productToAdd object and consider removing sizes property, as it might not be needed when adding the product to the cart.
+    console.log('Product to add:', productToAdd); // TODO remove this
     addToCart(productToAdd);
   };
 
