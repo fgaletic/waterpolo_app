@@ -44,9 +44,9 @@ This repository contains the code for the MVP for the Waterpolo Team E-Commerce 
 
 To get started with the application, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/[your-username]/waterpolo-team-e-commerce-app.git`
+1. Clone the repository: `git clone https://github.com/fgaletic/waterpolo_app.git`
 2. Install dependencies: `npm install`
-3. Start the application: `npm start`
+3. Start the application for both Front End and Back End: `npm run dev`
 
 ### Environment Variables
 
