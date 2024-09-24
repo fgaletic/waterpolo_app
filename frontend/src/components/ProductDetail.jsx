@@ -66,7 +66,6 @@ const ProductDetail = () => {
       return;
     }
     const productToAdd = { ...product, quantity: 1, size: selectedSize, image: product.image }; // TODO: Review productToAdd object and consider removing sizes property, as it might not be needed when adding the product to the cart.
-    console.log('Product to add:', productToAdd); // TODO remove this
     addToCart(productToAdd);
   };
 

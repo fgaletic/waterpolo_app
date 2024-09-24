@@ -8,9 +8,7 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (productToAdd) => {
     setCart([...cart, productToAdd]);
-    console.log('Cart updated:', cart);
   };
-  console.log('Context cart:', cart) //TODO remove this
 
   const removeFromCart = (productId) => {
     setCart(cart.filter(item => item.product._id !== productId));

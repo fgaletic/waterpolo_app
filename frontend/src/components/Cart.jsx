@@ -12,7 +12,6 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     try {
-      console.log("Cart:", cart);
 
       // Prepare cart items to send to the back end
       const products = cart.map((item) => ({
@@ -46,8 +45,6 @@ const Cart = () => {
       console.error("Error creating Stripe checkout session", error);
     }
   };
-
-  console.log("Cart:", cart);
 
   return (
     <Box sx={{ padding: 2 }}>
