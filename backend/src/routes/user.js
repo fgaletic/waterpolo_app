@@ -13,7 +13,8 @@ router.post('/register', async (req, res) => {
     await user.save();
     res.status(201).send(user);
   } catch (error) {
-    res.status(400).send(error);
+    console.error('Error during user registration:', error);
+    res.status(400).send('Registration failed');
   }
 });
 
@@ -28,7 +29,8 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
     res.send({ token });
   } catch (error) {
-    res.status(400).send(error);
+    console.error('Error during user login:', error);
+    res.status(400).send('Login failed');
   }
 });
 
